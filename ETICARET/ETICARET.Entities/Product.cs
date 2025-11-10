@@ -15,6 +15,7 @@ namespace ETICARET.Entities
         public decimal Price { get; set; }
         public List<ProductCategory> ProductCategories { get; set; }
         public List<Comment> Comments { get; set; }
+
         public Product()
         {
             Images = new List<Image>();

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ETICARET.DataAccess.Abstract
 {
-    public interface IProductDal:IRepository<Product>
+    public interface IProductDal : IRepository<Product>
     {
         int GetCountByCategory(string category);
         Product GetProductDetails(int id);
-        List<Product> GetProductsByCategory(string category, int page, int pageSize);
+        List<Product> GetProductsByCategory(string category,int page,int pageSize);
         void Update(Product entity, int[] categoryIds);
     }
 }

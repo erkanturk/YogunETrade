@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ETICARET.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Etrade : Migration
+    public partial class Proje : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

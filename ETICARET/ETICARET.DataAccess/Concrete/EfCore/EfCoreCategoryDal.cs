@@ -15,8 +15,8 @@ namespace ETICARET.DataAccess.Concrete.EfCore
         {
             using (var context = new DataContext())
             {
-                var cmd = @"delete from ProductCategory where ProductId=@p1 and CategoryId=@p0";
-                context.Database.ExecuteSqlRaw(cmd, categoryId, productId);
+                var cmd = "delete from ProductCategory where ProductId=@p1 and CategoryId=@p0";
+                context.Database.ExecuteSqlRaw(cmd, categoryId,productId);
             }
         }
 
@@ -25,11 +25,12 @@ namespace ETICARET.DataAccess.Concrete.EfCore
             using (var context = new DataContext())
             {
                 return context.Categories
-                    .Where(i => i.Id==id)
-                    .Include(i => i.ProductCategories)
-                    .ThenInclude(i => i.Product)
-                    .ThenInclude(i => i.Images)
-                    .FirstOrDefault();
+                        .Where(i => i.Id == id)
+                        .Include(i => i.ProductCategories)
+                        .ThenInclude(i => i.Product)
+                        .ThenInclude(i => i.Images)
+                        .FirstOrDefault();
+
             }
         }
 

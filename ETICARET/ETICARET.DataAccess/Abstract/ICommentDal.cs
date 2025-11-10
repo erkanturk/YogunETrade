@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ETICARET.DataAccess.Abstract
 {
-    public interface ICommentDal:IRepository<Comment>
+    public interface ICommentDal : IRepository<Comment>
     {
     }
 }

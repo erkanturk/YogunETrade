@@ -13,8 +13,7 @@ namespace ETICARET.DataAccess.Concrete.EfCore
     {
         public void Create(T entity)
         {
-            using (var context = new TContext())
-            {
+            using (var context = new TContext()) { 
                 context.Set<T>().Add(entity);
                 context.SaveChanges();
             }
@@ -33,7 +32,9 @@ namespace ETICARET.DataAccess.Concrete.EfCore
         {
             using (var context = new TContext())
             {
-                return filter==null?context.Set<T>().ToList():context.Set<T>().Where(filter).ToList();
+                return filter == null ? 
+                    context.Set<T>().ToList() :
+                    context.Set<T>().Where(filter).ToList();
             }
         }
 
@@ -57,7 +58,7 @@ namespace ETICARET.DataAccess.Concrete.EfCore
         {
             using (var context = new TContext())
             {
-                context.Entry(entity).State=EntityState.Modified;
+                context.Entry(entity).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }

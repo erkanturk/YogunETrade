@@ -25,21 +25,23 @@ namespace ETICARET.Entities
         public EnumOrderState OrderState { get; set; }
         public EnumPaymentTypes PaymentTypes { get; set; }
         public List<OrderItem> OrderItems { get; set; }
+
         public Order()
         {
             OrderItems = new List<OrderItem>();
         }
-
     }
+
     public enum EnumOrderState
     {
         waiting = 0,
         unpaid = 1,
-        completed = 2,
+        completed = 2
     }
+
     public enum EnumPaymentTypes
     {
-        CreditCard = 0,
-        Eft = 1,
+       CreditCard = 0,
+       Eft = 1
     }
 }

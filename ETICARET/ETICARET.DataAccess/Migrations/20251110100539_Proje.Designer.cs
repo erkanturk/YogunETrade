@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ETICARET.DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20251106132301_Etrade")]
-    partial class Etrade
+    [Migration("20251110100539_Proje")]
+    partial class Proje
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -9,17 +9,11 @@ namespace ETICARET.DataAccess.Abstract
 {
     public interface IRepository<T>
     {
-        T GetById(int id);//Belirtilen ıd ye sahip tek bir nesneyi getirir
-        T GetOne(Expression<Func<T, bool>> filter = null);//Belirtilen koşula uyan yek bir nesneyi getirir
-        List<T> GetAll(Expression<Func<T, bool>> filter = null);//Belirtile koşula uyan tüm nesneleri getirir
+        T GetById(int id);
+        T GetOne(Expression<Func<T, bool>> filter = null);
+        List<T> GetAll(Expression<Func<T, bool>> filter = null);
         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);
     }
-    /* 
-     * Bu yapı tüm veri erişim katmanlarında olan ortak Crud işlemlerini tek bir yerden yönetilmesini sağlayacak
-     * Generic olması sayesinde Product,Category,Order gibi farklı nesneler için tekrar tekrar yazılmak zorunda kalmayacak.
-     
-     
-     */
 }

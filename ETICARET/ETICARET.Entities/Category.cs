@@ -11,9 +11,10 @@ namespace ETICARET.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public List<ProductCategory> ProductCategories { get; set; }
+
         public Category()
         {
-            ProductCategories=new List<ProductCategory>();//İlişkilendirme listesini başlatıyoruz.
+            ProductCategories = new List<ProductCategory>(); 
         }
     }
 }
