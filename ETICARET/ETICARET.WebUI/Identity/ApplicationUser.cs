@@ -1,6 +1,9 @@
-﻿namespace ETICARET.WebUI.Identity
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace ETICARET.WebUI.Identity
 {
-    public class ApplicationUser
+    public class ApplicationUser:IdentityUser
     {
+        public string FullName { get; set; }
     }
 }
