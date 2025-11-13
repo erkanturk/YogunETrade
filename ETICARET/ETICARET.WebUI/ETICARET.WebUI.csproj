@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Account\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
