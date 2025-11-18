@@ -78,7 +78,7 @@ namespace ETICARET.WebUI.Controllers
                 });
 
                 // Site adresi (lokalhost üstünden)
-                string siteUrl = "https://localhost:5174";
+                string siteUrl = "https://localhost:7220";
 
                 // Tıklanacak linki oluşturur
                 string activeUrl = $"{siteUrl}{callbackUrl}";
