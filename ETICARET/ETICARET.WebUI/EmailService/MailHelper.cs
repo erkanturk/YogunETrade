@@ -30,7 +30,7 @@ namespace ETICARET.WebUI.EmailService
                     smtp.EnableSsl = true;
                     smtp.Credentials=new NetworkCredential(
                         "ubymailsistem@gmail.com",
-                        "klot sjzm bjga jchs"
+                        "rwvv hprk dwhe jsxv"
                         );
                     smtp.UseDefaultCredentials = false;
                     smtp.Send(message);
