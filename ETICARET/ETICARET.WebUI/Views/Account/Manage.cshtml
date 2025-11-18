@@ -1,5 +1,41 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using ETICARET.Entities
+@model AccountModel
 @{
+    ViewData["Title"] = "Manage";
 }
+@section Scripts {
+    <script src="~/modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+}
+<div class="manage_center">
+    <h1>Manage</h1>
+    <h4>Manage User</h4>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-3 validation-box">
+            <div asp-validation-summary="ModelOnly" class="text-danger validation"></div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-3">
+            <form asp-action="Manage" asp-controller="Account" method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group mb-2">
+                    <input asp-for="FullName" class="Manage-control" placeholder="Full Name" />
+                    <span asp-validation-for="FullName" class="text-primary"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <input asp-for="UserName" class="Manage-control" placeholder="User Name" />
+                    <span asp-validation-for="UserName" class="text-primary"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <input asp-for="Email" class="Manage-control" placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-primary"></span>
+                </div>
+                <div class="form-group mt-4">
+                    <input type="submit" value="Manage User" class="btn btn-warning" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
