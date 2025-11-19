@@ -1,5 +1,66 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using System.Security.Claims
+@using ETICARET.Entities
+
+@model List<Comment>
+
 @{
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var usernames = ViewBag.Usernames as Dictionary<string, string> ?? new Dictionary<string, string>();
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" id="new_comment_text" class="form-control mb-2" placeholder="Your Comments..." />
+                <span class="input-group-btn mt-2">
+                    <button type="button" class="btn btn-success" onclick="doComment(this,'new_clicked',-1)">
+                        <span class="fas fas-share"></span> Submit
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+}
+@if (Model.Count > 0)
+{
+    @foreach (var comment in Model)
+    {
+        <div class="d-flex">
+            <div class="flex-grow-1 ms-1 mt-3">
+                <h6 class="col-md-12">
+                    <span>@(usernames.ContainsKey(comment.UserId) ? usernames[comment.UserId] : "Anonim")</span>
+                    <small class="text-muted">
+                        <i>@comment.CreateOn.ToString("ddd, dd MMMM yyyy")</i>
+                    </small>
+                </h6>
+                <span class="col-md-10" id="comment_text_@comment.Id" contenteditable="false">
+                    @comment.Text
+                </span>
+                @if (User.Identity.IsAuthenticated && userId == comment.UserId)
+                {
+                    <span class="col-md-2 float-end">
+                        <button type="button" class="btn btn-warning btn-xs"
+                                data-edit-mode="false" onclick="doComment(this,'edit_clicked',@comment.Id,'#comment_text_@comment.Id')">
+                            <span class="fas fa-edit fa-xs"></span>
+                        </button>
+                        <button type="button" class="btn btn-warning btn-xs"
+                                data-edit-mode="false" onclick="doComment(this,'delete_clicked',@comment.Id,'#comment_text_@comment.Id')">
+                            <span class="fas fa-trash fa-xs"></span>
+                        </button>
+                    </span>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-info mt-2">
+        Düşüncelerini Yaz
+    </div>
 }
