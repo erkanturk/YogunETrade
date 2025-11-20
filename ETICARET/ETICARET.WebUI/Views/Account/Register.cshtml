@@ -1,7 +1,8 @@
 ﻿@model RegisterModel
 @{
-    ViewData["Title"]="Login";
+    ViewData["Title"] = "Login";
 }
+
 @section Scripts {
     <script src="~/modules/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
@@ -16,14 +17,14 @@
     </div>
     <div class="row d-flex justify-content-center">
         <div class="col-md-3">
-            <form asp-action="Register" asp-controller="Account" method="post">
+            <form asp-action="Register" asp-controller="Account">
                 @Html.AntiForgeryToken()
                 <div class="form-group mb-2">
                     <input asp-for="FullName" class="form-control" placeholder="Full Name" />
                     <span asp-validation-for="FullName" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-2">
-                    <input asp-for="UserName" class="form-control" placeholder="User Name" />
+                    <input asp-for="UserName" class="form-control" placeholder="Username" />
                     <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-2">
@@ -42,7 +43,6 @@
                     <input type="submit" value="Register User" class="btn btn-primary" />
                 </div>
             </form>
-           
         </div>
     </div>
 </div>

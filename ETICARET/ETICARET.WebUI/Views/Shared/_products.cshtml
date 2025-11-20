@@ -6,7 +6,7 @@
         @{
             var image = Model.Images.Find(img => img.ProductId == Model.Id);
         }
-        @if (image != null)
+        @if(image != null)
         {
             <img src="~/img/@image.ImageUrl" />
         }
@@ -16,7 +16,7 @@
         }
         <div class="card-body">
             <h4 class="card-title">
-                <a asp-controller="Shop" asp-action="Details" asp-route-id="@Model.Id">
+                <a asp-controller="Shop" asp-action="Details"  asp-route-id="@Model.Id">
                     @Model.Name
                 </a>
             </h4>
@@ -25,7 +25,7 @@
                     @Model.Price
                 </small>
             </div>
-
+          
         </div>
         <div class="card-footer text-center">
             <a class="btn btn-outline-primary btn-sm" asp-controller="Shop" asp-action="Details" asp-route-id="@Model.Id">
