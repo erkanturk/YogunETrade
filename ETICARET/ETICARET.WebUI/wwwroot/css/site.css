@@ -1,22 +1,149 @@
+/* HTML etiketindeki temel yazý boyutunu belirler */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
+/* Ekran geniþliði 768px ve üzeri olduðunda yazý boyutunu büyütür */
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
+/* Butonlar, linkler veya form elemanlarý odaklandýðýnda etrafýna gölge ekleyerek daha belirgin hale getirir */
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+/* HTML etiketinin min-height özelliðini %100 yaparak sayfanýn en az tam ekran boyu kadar yüksek olmasýný saðlar */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
+/* Sayfa içerisindeki genel üst boþluðu ayarlar (mesela bir navbar varsa altýndaki boþluk) */
+.pageContainer {
+    margin-top: 0px;
+}
+
+/* Body etiketinin alt tarafýnda 60px boþluk býrakýr (örneðin bir sabit footer için yer açmak amacýyla) */
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+/* Carousel (slayt gösterisi) içerisindeki sonraki butonunun konumunu sað tarafa kaydýrýr */
+.carousel-control-next {
+    right: -65px !important;
+}
+
+/* Carousel içerisindeki önceki butonun konumunu sol tarafa kaydýrýr */
+.carousel-control-prev {
+    left: -65px !important;
+}
+
+/* Card içerisindeki .card-body'ye bir yükseklik tanýmlar */
+.card > .card-body {
+    height: 150px;
+}
+
+/* Card içindeki img etiketi için en-boy oranýný, içeriði kesmeden yerleþtirmeyi ve üst boþluðu ayarlar */
+.card > img {
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    margin-top: 5px;
+}
+
+/* Card baþlýðýnda (card-title) alt boþluk ekler */
+.card > .card-body > .card-title {
+    margin-bottom: 10px;
+}
+
+    /* Card baþlýðý altýndaki linkin (ürün adý vb.) stilini ayarlar: renk, dekorasyon, yazý boyutu */
+    .card > .card-body > .card-title > a {
+        color: #0d6efd;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+/* Card içerisindeki fiyat kutusu görünümünü belirler */
+.card > .card-body > .price-box > .price {
+    background-color: #0d6efd !important;
+    color: #f2f2f2 !important;
+    padding: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-top: 10px !important;
+    text-align: right !important;
+    margin: auto;
+}
+
+/* Ürün detay sayfasýndaki .product-detail bloðunu çerçeveleyip, padding ekler */
+.product-detail {
+    border: 3px solid #f2f2f2;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Ürün miktar inputunun max geniþliðini ve kenar yuvarlaklýðýný ayarlar */
+.quantity {
+    max-width: 75px !important;
+    border-radius: 10px !important;
+}
+
+/* Sepete ekleme veya benzeri buton grubunun boyut ve hizalamasýný belirler */
+.cart-group {
+    width: 350px !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Üst resimlere özel karýþým modu uygulayarak arka planla karýþmasýný saðlamak */
+.top-image {
+    mix-blend-mode: multiply;
+}
+
+/* Küçük resimlerin orantýsal boyutunu korumasýný ve içeriði kesmeden yerleþtirmesini saðlar */
+.thumb-image {
+    aspect-ratio: 6/5;
+    object-fit: contain;
+}
+
+/* Yorum düzenleme alanýnýn görünümünü (çerçeve, boyut, padding) ayarlar */
+.editableComment {
+    display: inline-block;
+    border: 1px solid black;
+    width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Validasyon mesajlarýný ortalamak için genel bir kapsayýcý */
+.validation-box {
+    margin: 0 auto;
+}
+
+/* Validasyon hata mesajlarýný liste biçiminden çýkarýp kalýn gösterir */
+.row > .validation-box > .validation > ul > li {
+    list-style: none;
+    font-weight: 700;
+}
+
+/* Ekran geniþliði en fazla 667px olduðunda carousel resimlerini sayfanýn tamamýna sýðdýrýr */
+@media only screen and (max-width: 667px) {
+    .carousel > .carousel-inner > .carousel-item > img {
+        width: 100%;
+    }
+}
+
+/* Giriþ/Kayýt butonlarýný saða hizalar */
+.login-register {
+    justify-content: end;
+}
+
+/* Ekran geniþliði en fazla 667px olduðunda giriþ/kayýt butonlarýný sola hizalar */
+@media only screen and (max-width: 667px) {
+    .login-register {
+        justify-content: start;
+    }
 }

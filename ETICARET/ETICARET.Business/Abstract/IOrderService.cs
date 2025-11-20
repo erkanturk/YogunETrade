@@ -9,7 +9,7 @@ namespace ETICARET.Business.Abstract
 {
     public interface IOrderService
     {
-        List<Order> GetOrders(string userId);
-        void Create(Order entity);
+        List<Order> GetOrders(string userId); // Kullanıcının sipariş geçmişini getirir.
+        void Create(Order entity); // Yeni bir sipariş oluşturur.
     }
 }

@@ -1,33 +1,47 @@
-﻿@using ETICARET.Entities
-@model ProductListModel
+﻿@model ProductListModel
+
 @{
+    // Sayfa başlığını belirler
+
     ViewData["Title"] = "Homepage";
 }
 
+
 <div class="row d-flex justify-content-center">
-    <div class=col-md-12 "d-flex justify-content-center">
+    <!-- Slider (kayan görseller) kısmını "_slider" kısmi görünüm olarak dahil eder -->
+    <div class="col-md-12 d-flex justify-content-center">
         <partial name="_slider" />
     </div>
+
+    <!-- Ana içerikten sonra bir satır boşluk -->
     <div class="row mt-5">
+        <!-- Kategori listeleme alanı (sol sütun) -->
         <div class="col-md-3">
+            <!-- CategoryList component'ini (ViewComponent) asenkron olarak çağırır ve çıktısını bu alana yerleştirir -->
             @await Component.InvokeAsync("CategoryList")
         </div>
-        <div class="col-md-9">
 
+        <!-- Ürün listeleme alanı (sağ sütun) -->
+        <div class="col-md-9">
             <div class="row">
+                @* Model üzerinden gelen ürün listesi boş değilse, her ürünü _products kısmi görünümü ile render ediyor *@
                 @if (Model.Products != null && Model.Products.Count > 0)
+
                 {
                     @foreach (Product product in Model.Products)
                     {
+                        <!-- Her bir ürünü "_products" partial view'ında temsil eder -->
                         <partial name="_products" for="@product" />
                     }
                 }
+
                 else
+
                 {
+                    <!-- Eğer ürün yoksa kullanıcıya bilgi mesajı gösterilir -->
                     <p>Ürün Bulanamadı.</p>
                 }
             </div>
         </div>
     </div>
-   
 </div>

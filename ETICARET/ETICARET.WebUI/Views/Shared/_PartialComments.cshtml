@@ -1,5 +1,4 @@
 ﻿@using System.Security.Claims
-@using ETICARET.Entities
 
 @model List<Comment>
 
@@ -44,12 +43,10 @@
                 @if (User.Identity.IsAuthenticated && userId == comment.UserId)
                 {
                     <span class="col-md-2 float-end">
-                        <button type="button" class="btn btn-warning btn-xs" 
-                        data-edit-mode="false" onclick="doComment(this,'edit_clicked',@comment.Id,'#comment_text_@comment.Id')">
+                        <button type="button" class="btn btn-warning btn-xs" data-edit-mode="false" onclick="doComment(this,'edit_clicked',@comment.Id,'#comment_text_@comment.Id')">
                             <span class="fas fa-edit fa-xs"></span>
                         </button>
-                        <button type="button" class="btn btn-warning btn-xs" 
-                        data-edit-mode="false" onclick="doComment(this,'delete_clicked',@comment.Id,'#comment_text_@comment.Id')">
+                        <button type="button" class="btn btn-warning btn-xs" data-edit-mode="false" onclick="doComment(this,'delete_clicked',@comment.Id,'#comment_text_@comment.Id')">
                             <span class="fas fa-trash fa-xs"></span>
                         </button>
                     </span>

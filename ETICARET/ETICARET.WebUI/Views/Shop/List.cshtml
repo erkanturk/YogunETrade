@@ -1,18 +1,30 @@
-﻿@using ETICARET.Entities
+﻿@* Model binding - ProductListModel tipinde model bekler *@
 @model ProductListModel
+
 @{
+    @* Sayfa başlığını ayarla *@
     ViewData["title"] = "Product List";
 }
 
+@* Ana container - merkezi hizalama *@
 <div class="row d-flex justify-content-center">
     <div class="row mt-5">
+
+        @* Sol taraf - Kategori filtresi (3 kolon) *@
         <div class="col-md-3">
+            @* View Component kullanarak kategori listesini getir *@
             @await Component.InvokeAsync("CategoryList")
         </div>
-        <div class="col-md-9"> 
+
+        @* Sağ taraf - Ürün listesi (9 kolon) *@
+        <div class="col-md-9">
+
+            @* Ürünler container *@
             <div class="row">
+                @* Ürün varlık kontrolü *@
                 @if (Model.Products != null && Model.Products.Count > 0)
                 {
+                    @* Her ürün için partial view render et *@
                     @foreach (Product product in Model.Products)
                     {
                         <partial name="_products" for="@product" />
@@ -20,13 +32,15 @@
                 }
                 else
                 {
+                    @* Ürün bulunamazsa mesaj göster *@
                     <p>Ürün Bulanamadı.</p>
                 }
             </div>
+
+            @* Sayfalama (Pagination) *@
             <div class="row">
                 <div class="d-flex justify-content-center mt-5" page-model="@Model.PageInfo"></div>
             </div>
         </div>
     </div>
-
 </div>

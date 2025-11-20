@@ -1,51 +1,75 @@
 ﻿@model CategoryListModel
 
 @{
+    // Sayfa başlığını ayarlar
+
     ViewData["title"] = "Category List";
 }
+
+<!-- Kategori silme işlemi için modal penceresini açma script'i -->
 <script>
+    // .open-DeleteDialog tıklandığında çalışır
     $(document).on("click", ".open-DeleteDialog", function () {
-         var categoryId = $(this).data('id');
-         $(".modal-footer #categoryId").val(categoryId);
-         $('#DeleteModal').modal('show');
+        // Tıklanan butondan kategori Id'sini alır
+        var categoryId = $(this).data('id');
+        // Modal penceresi içerisindeki gizli input'a bu categoryId değeri atanır
+        $(".modal-footer #categoryId").val(categoryId);
+        // Modal penceresi ekranda gösterilir
+        $('#DeleteModal').modal('show');
     });
 </script>
+
 <h1>Admin Categories</h1>
 <hr />
+
+<!-- Model üzerinden gelen kategori sayısı 0'dan büyükse tabloyu göster, aksi halde uyarı göster -->
 @if (Model.Categories.Count > 0)
+
 {
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col"></th>
+                <th scope="col">#</th>    <!-- Kategori ID -->
+                <th scope="col">Name</th> <!-- Kategori Adı -->
+                <th scope="col"></th>     <!-- İşlem butonları için boş başlık -->
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Categories)
+
             {
                 <tr>
                     <th scope="row">@item.Id</th>
                     <td>@item.Name</td>
                     <td>
+                        <!-- Kategori düzenleme butonu. Kategori ID'sine göre /admin/categories/ID sayfasına yönlendirir -->
                         <a class="btn btn-warning btn-sm me-2" href="/admin/categories/@item.Id">Edit</a>
-                         <a data-toggle="modal" data-id="@item.Id" title="Add this item" 
-                            class="open-DeleteDialog btn btn-danger btn-sm" href="#DeleteModal">Delete</a>
+
+                        <!-- Kategori silme butonu. Tıklandığında modal penceresini açacak -->
+                        <a data-toggle="modal"
+                           data-id="@item.Id"
+                           title="Add this item"
+                           class="open-DeleteDialog btn btn-danger btn-sm"
+                           href="#DeleteModal">
+                            Delete
+                        </a>
                     </td>
                 </tr>
             }
-
         </tbody>
     </table>
 }
+
 else
+
 {
+    <!-- Kategori yoksa uyarı mesajı -->
     <div class="alert alert-warning">
         <h4>No Categories</h4>
     </div>
 }
 
+<!-- Kategori silme işlemi için Modal penceresi -->
 <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="DeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -58,7 +82,9 @@ else
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                <!-- Kategori silme formu. DeleteCategory Action'ına POST isteği gönderir -->
                 <form action="/admin/deletecategory" method="POST" style="display:inline">
+                    <!-- Silinecek kategorinin Id'si gizli input içerisinde -->
                     <input type="hidden" name="categoryId" id="categoryId" />
                     <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">Evet</button>
                 </form>
@@ -66,4 +92,3 @@ else
         </div>
     </div>
 </div>
-

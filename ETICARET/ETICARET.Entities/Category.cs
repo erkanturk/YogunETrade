@@ -8,13 +8,13 @@ namespace ETICARET.Entities
 {
     public class Category
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public List<ProductCategory> ProductCategories { get; set; }
+        public int Id { get; set; } // Kategorinin benzersiz kimliği
+        public string Name { get; set; } // Kategori adı
+        public List<ProductCategory> ProductCategories { get; set; } // Bu kategoriye ait ürünlerle ilişkisi
 
         public Category()
         {
-            ProductCategories = new List<ProductCategory>(); 
+            ProductCategories = new List<ProductCategory>(); // İlişkilendirme listesi başlatılıyor
         }
     }
 }

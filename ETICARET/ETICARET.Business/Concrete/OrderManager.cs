@@ -11,17 +11,20 @@ namespace ETICARET.Business.Concrete
 {
     public class OrderManager : IOrderService
     {
-        private readonly IOrderDal _orderDal;
+        private IOrderDal _orderDal;
 
         public OrderManager(IOrderDal orderDal)
         {
             _orderDal = orderDal;
         }
+
+        // Yeni sipariş ekler
         public void Create(Order entity)
         {
             _orderDal.Create(entity);
         }
 
+        // Kullanıcının siparişlerini getirir
         public List<Order> GetOrders(string userId)
         {
             return _orderDal.GetOrders(userId);

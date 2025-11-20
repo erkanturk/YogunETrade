@@ -11,27 +11,32 @@ namespace ETICARET.Business.Concrete
 {
     public class CommentManager : ICommentService
     {
-        private readonly ICommentDal _commentDal;
+        private ICommentDal _commentDal; // Veri erişim bağımlılığı
 
         public CommentManager(ICommentDal commentDal)
         {
             _commentDal = commentDal;
         }
+
+        // Yorum ekler
         public void Create(Comment entity)
         {
-           _commentDal.Create(entity);
+            _commentDal.Create(entity);
         }
 
+        // Yorumu siler
         public void Delete(Comment entity)
         {
-           _commentDal.Delete(entity);
+            _commentDal.Delete(entity);
         }
 
+        // Belirtilen yorum ID'sine göre getirir
         public Comment GetById(int id)
         {
             return _commentDal.GetById(id);
         }
 
+        // Yorumu günceller
         public void Update(Comment entity)
         {
             _commentDal.Update(entity);

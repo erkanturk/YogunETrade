@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace ETICARET.DataAccess.Abstract
 {
-    public interface ICartDal : IRepository<Cart>
+    public interface ICartDal : IRepository<Cart> // Genel Repository’den türetilmiştir
     {
-        void ClearCart(int cartId);
-        void DeleteFromCart(int cartId,int productId);
-        Cart GetCartByUserId(string userId);
+        void ClearCart(string cartId); // Belirtilen sepetteki tüm ürünleri temizler
+        void DeleteFromCart(int cartId, int productId); // Belirtilen ürünü sepetteki belirli bir sepetten siler
+        Cart GetCartByUserId(string userId); // Kullanıcının sepet bilgilerini getirir
     }
 }
+/*
+👉 Neden var?
+Sepet yönetimi için 
+özel işlemler gerektiği için bu interface yazılmıştır. 
+ClearCart tüm sepeti temizlerken, DeleteFromCart yalnızca belirli bir ürünü kaldırır.
+*/

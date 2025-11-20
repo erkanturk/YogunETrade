@@ -1,33 +1,52 @@
 ﻿@model LoginModel
+
 @{
+    // Sayfa başlığını belirler
+
     ViewData["Title"] = "Login";
 }
 
-@section Scripts{
+@section Scripts {
+    <!-- jQuery Validation kütüphanelerini sayfaya ekler -->
     <script src="~/modules/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 }
+
 <div class="text-center">
+    <!-- Başlıklar -->
     <h1>Login</h1>
     <h4>Login User</h4>
+
+    <!-- Model validasyonu sonucunda alınan hataları göstermek için alan -->
     <div class="row d-flex justify-content-center">
         <div class="col-md-3 validation-box">
+            <!-- Sadece model validasyon hatalarını özet olarak gösterir -->
             <div asp-validation-summary="ModelOnly" class="text-danger validation"></div>
         </div>
     </div>
+
+    <!-- Giriş formu alanı -->
     <div class="row d-flex justify-content-center">
         <div class="col-md-3">
+            <!-- ASP.NET Core form: Account Controller'daki Login Action'a POST isteği gönderir -->
             <form asp-action="Login" asp-controller="Account">
-                @Html.AntiForgeryToken()
+                @Html.AntiForgeryToken() <!-- CSRF koruması için antiforgery token ekler -->
+                <!-- Giriş sonrası yönlendirilecek sayfanın bilgisi (varsa) -->
                 <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+
+                <!-- Email alanı -->
                 <div class="form-group mb-2">
                     <input asp-for="Email" class="form-control" placeholder="Email" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
+
+                <!-- Şifre alanı -->
                 <div class="form-group mb-2">
                     <input asp-for="Password" class="form-control" placeholder="Password" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
+
+                <!-- Giriş butonu ve Şifremi Unuttum linki -->
                 <div class="form-group mt-4">
                     <input type="submit" value="Login" class="btn btn-primary" />
                     <a href="/Account/ForgotPassword" type="submit" class="btn btn-warning">Forgot Password</a>

@@ -78,7 +78,7 @@ namespace ETICARET.WebUI.Controllers
                 });
 
                 // Site adresi (lokalhost üstünden)
-                string siteUrl = "https://localhost:7220";
+                string siteUrl = "https://localhost:5174";
 
                 // Tıklanacak linki oluşturur
                 string activeUrl = $"{siteUrl}{callbackUrl}";
@@ -310,7 +310,7 @@ namespace ETICARET.WebUI.Controllers
                 token = code
             });
 
-            string siteUrl = "https://localhost:7220";
+            string siteUrl = "https://localhost:5174";
             string activeUrl = $"{siteUrl}{callbackUrl}";
 
             // Gönderilecek e-postanın içeriği
@@ -484,7 +484,7 @@ namespace ETICARET.WebUI.Controllers
                     userId = user.Id,
                     token = code
                 });
-                string siteUrl = "https://localhost:7220";
+                string siteUrl = "https://localhost:5174";
                 string resetUrl = $"{siteUrl}{callbackUrl}";
 
                 // Kullanıcıya email gönderilir

@@ -278,7 +278,7 @@ namespace ETICARET.WebUI.Controllers
         public IActionResult EditCategory(int? id)
         {
             // İlgili kategori ve o kategorideki ürünler çekilir
-            var entity = _categoryService.GetByIdWithProducts(id.Value);
+            var entity = _categoryService.GetByWithProducts(id.Value);
 
             // Kategori modelini doldurup view'a gönderir
             return View(

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ETICARET.DataAccess.Concrete.EfCore
 {
-    public class EfCoreCommentDal : EfCoreGenericRepository<Comment, DataContext>, ICommentDal
+    public class EfCoreCommentDal : EfCoreGenericRepository<Comment,DataContext>,ICommentDal
     {
     }
 }

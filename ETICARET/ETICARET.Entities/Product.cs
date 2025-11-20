@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ETICARET.Entities
 {
     public class Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public List<Image> Images { get; set; }
-        public decimal Price { get; set; }
-        public List<ProductCategory> ProductCategories { get; set; }
-        public List<Comment> Comments { get; set; }
+        public int Id { get; set; } // Ürünün benzersiz kimliği
+        public string Name { get; set; } // Ürün adı
+        public string Description { get; set; } // Ürün açıklaması
+        public List<Image> Images { get; set; } // Ürüne ait resimler
+        [Range(0, double.MaxValue, ErrorMessage = "Fiyat geçerli bir değer olmalıdır.")]
+        public decimal Price { get; set; } // Ürün fiyatı
+        public List<ProductCategory> ProductCategories { get; set; } // Kategorilerle ilişki
+        public List<Comment> Comments { get; set; } // Ürün yorumları
 
         public Product()
         {

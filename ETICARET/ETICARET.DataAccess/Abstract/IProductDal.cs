@@ -9,9 +9,9 @@ namespace ETICARET.DataAccess.Abstract
 {
     public interface IProductDal : IRepository<Product>
     {
-        int GetCountByCategory(string category);
-        Product GetProductDetails(int id);
-        List<Product> GetProductsByCategory(string category,int page,int pageSize);
-        void Update(Product entity, int[] categoryIds);
+        int GetCountByCategory(string category); // Belirtilen kategoride kaç ürün olduğunu döndürür
+        Product GetProductDetails(int id); // Bir ürünün detaylarını getirir
+        List<Product> GetProductsByCategory(string category, int page, int pageSize); // Sayfalama ile belirli bir kategorideki ürünleri getirir
+        void Update(Product entity, int[] categoryIds); // Ürünü ve ona bağlı kategorileri günceller
     }
 }

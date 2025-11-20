@@ -1,30 +1,56 @@
-﻿@using ETICARET.WebUI.Extensions
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width-device-width,initial-scale=1.0" />
-        <title>@ViewData["Title"] - Üçüncübinyıl ETİCARET</title>
-        <link rel="stylesheet" href="/modules/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-        <script src="/modules/jquery/dist/jquery.min.js" ></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <!-- font awesome --> 
-    </head>
-    <body>
-        <partial name="_navbar" />
-        <div class="container pageContainer">
-            @if(TempData["message"] != null)
-            {
-                /* error ve success mesajları */
-                <partial name="_resultMessage" model="@(TempData.Get<ResultModel>("message"))" />
-            }
-            @RenderBody()
-        </div>
+<head>
+    <!-- Sayfanın karakter kodlaması ve responsive tasarım için meta tagları -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
+    <!-- Tarayıcı sekmesinde görünecek başlık; ViewData["Title"] kullanılarak dinamik hale getirilir -->
+    <title>@ViewData["Title"] - Üçüncübinyıl ETİCARET</title>
 
+    <!-- Bootstrap CSS dosyası -->
+    <link rel="stylesheet" href="/modules/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Projenin özel CSS dosyası (site.css) -->
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <!-- jQuery kütüphanesi -->
+    <script src="/modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- Font Awesome (ikon kütüphanesi) -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Ortak navbar (kullanıcı, menü vb.) -->
+    <partial name="_navbar" />
+
+    <!-- Sayfa içeriği için container ve pageContainer sınıfları kullanılır -->
+    <div class="container pageContainer">
+        @if (TempData["message"] != null)
+
+        {
+
+            /* İşlem sonuçlarına ait mesajları göstermek için özel partial view.
+
+            TempData'dan "message" key'i ile ResultModel'i alır. */
+            <partial name="_resultMessage" model="@(TempData.Get<ResultModel>("message"))" />
+        }
+
+        <!-- Buraya her sayfa/Action kendine ait içerik (RenderBody) dahil edilir -->
+        @RenderBody()
+    </div>
+
+    <!-- Bootstrap'ın JavaScript dosyaları (popper + js) tek bundle olarak -->
     <script src="/modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <!-- Projeye ait özel JavaScript dosyası (site.js) -->
     <script src="~/js/site.js"></script>
-    @await RenderSectionAsync("Scripts",required:false)
-    </body>
+
+    <!-- Sayfaya özgü ek script bölümü (örneğin validation scriptleri) isteğe bağlı olarak render edilebilir -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
 </html>

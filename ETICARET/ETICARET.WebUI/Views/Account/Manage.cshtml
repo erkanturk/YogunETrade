@@ -1,40 +1,88 @@
-﻿@model AccountModel
+﻿@* Model binding - AccountModel tipinde model bekler *@
+@model AccountModel
+
 @{
+    @* ViewData ile sayfa başlığını ayarla - Layout'ta kullanılır *@
     ViewData["Title"] = "Manage Account";
 }
+
+@* Scripts section - Layout'taki Scripts section'ına eklenir *@
 @section Scripts {
+@* jQuery Validation kütüphanesi - client-side validation için *@
     <script src="~/modules/jquery-validation/dist/jquery.validate.js"></script>
+
+@* Unobtrusive validation - ASP.NET Core validation attributes ile entegrasyon *@
     <script src="~/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 }
+
 <div class="text-center">
+    @* Dinamik sayfa başlığı *@
     <h1>@ViewData["Title"]</h1>
+
+    @* Validation summary için container - Bootstrap grid system *@
     <div class="row d-flex justify-content-center">
         <div class="col-md-3 validation-box">
+            @* Model-level validation hatalarını göster *@
+            @* "ModelOnly" - sadece model seviyesindeki hatalar, property hatalar değil *@
             <div asp-validation-summary="ModelOnly" class="text-danger validation"></div>
         </div>
     </div>
+
+    @* Ana form container *@
     <div class="row d-flex justify-content-center">
         <div class="col-md-3">
+            @* Form - POST request ile Account controller'ın Manage action'ına gönderir *@
             <form asp-action="Manage" asp-controller="Account" method="post">
+
+                @* CSRF token - Cross-Site Request Forgery saldırılarına karşı koruma *@
                 @Html.AntiForgeryToken()
+
+                @* Hidden field - Kullanıcı ID'sini gizli olarak gönder *@
                 <input type="hidden" name="Id" value="@Model.Id" />
+
+                @* Full Name input field *@
                 <div class="form-group mb-2">
                     <strong><label for="FullName">Full Name</label></strong>
-                    <input asp-for="FullName" class="form-control" id="FullName" name="FullName" value="@Model.FullName" placeholder="FullName" required />
+                    <input asp-for="FullName"
+                           class="form-control"
+                           id="FullName"
+                           name="FullName"
+                           value="@Model.FullName"
+                           placeholder="FullName"
+                           required />
+                    @* Field-level validation message *@
                     <span asp-validation-for="FullName" class="text-danger"></span>
                 </div>
+
+                @* User Name input field *@
                 <div class="form-group mb-2">
-                    <strong><label for="UserName">User Name</label></strong> 
-                    <input asp-for="UserName" class="form-control" id="UserName" name="UserName" value="@Model.UserName" placeholder="UserName" required />
+                    <strong><label for="UserName">User Name</label></strong>
+                    <input asp-for="UserName"
+                           class="form-control"
+                           id="UserName"
+                           name="UserName"
+                           value="@Model.UserName"
+                           placeholder="UserName"
+                           required />
                     <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
+
+                @* Email input field *@
                 <div class="form-group mb-2">
                     <strong><label for="Email">Email</label></strong>
-                    <input asp-for="Email" class="form-control" id="Email" name="Email" value="@Model.Email" placeholder="Email" required />
+                    <input asp-for="Email"
+                           class="form-control"
+                           id="Email"
+                           name="Email"
+                           value="@Model.Email"
+                           placeholder="Email"
+                           required />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
+
+                @* Submit button *@
                 <div class="form-group mt-4">
-                    <input type="submit" value="Profile Update" class="btn btn-danger" />
+                    <input type="submit" value="Edit Register" class="btn btn-danger" />
                 </div>
             </form>
         </div>

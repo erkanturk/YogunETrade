@@ -9,13 +9,13 @@ namespace ETICARET.Business.Abstract
 {
     public interface IProductService
     {
-        Product GetById(int id);
-        List<Product> GetProductByCategory(string category,int page,int pageSize);
-        List<Product> GetAll();
-        Product GetProductDetail(int id);
-        void Create(Product entity);
-        void Update(Product entity, int[] categoryIds);
-        void Delete(Product entity);
-        int GetCountByCategory(string category);
+        Product GetById(int id); // Belirli bir ürünü getirir.
+        List<Product> GetProductByCategory(string category, int page, int pageSize); // Sayfalama ile belirli bir kategorideki ürünleri getirir.
+        List<Product> GetAll(); // Tüm ürünleri getirir.
+        Product GetProductDetail(int id); // Ürün detaylarını getirir.
+        void Create(Product entity); // Yeni ürün ekler.
+        void Update(Product entity, int[] categoryIds); // Ürünü ve kategorilerini günceller.
+        void Delete(Product entity); // Ürünü siler.
+        int GetCountByCategory(string category); // Belirli bir kategoride kaç ürün olduğunu hesaplar.
     }
 }

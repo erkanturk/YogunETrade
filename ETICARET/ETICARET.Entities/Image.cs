@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ETICARET.Entities
 {
-    [Table("Image")]
+    [Table("Image")] // Veritabanında 'Image' tablosuna karşılık gelir
     public class Image
     {
-        public int Id { get; set; }
-        public string? ImageUrl { get; set; }
-        public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public int Id { get; set; } // Resmin benzersiz kimliği
+        public string? ImageUrl { get; set; } // Resmin URL adresi
+        public int ProductId { get; set; } // Resmin ait olduğu ürün kimliği
+        public Product Product { get; set; } // Ürünle ilişkilendirme
     }
 }

@@ -11,14 +11,17 @@ namespace ETICARET.DataAccess.Concrete.EfCore
 {
     public class EfCoreGenericRepository<T, TContext> : IRepository<T> where T : class where TContext : DbContext, new()
     {
+        // Yeni bir nesne ekler
         public void Create(T entity)
         {
-            using (var context = new TContext()) { 
+            using (var context = new TContext())
+            {
                 context.Set<T>().Add(entity);
                 context.SaveChanges();
             }
         }
 
+        // Nesneyi siler
         public virtual void Delete(T entity)
         {
             using (var context = new TContext())
@@ -28,16 +31,16 @@ namespace ETICARET.DataAccess.Concrete.EfCore
             }
         }
 
+        // Tüm nesneleri getirir
         public virtual List<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
             using (var context = new TContext())
             {
-                return filter == null ? 
-                    context.Set<T>().ToList() :
-                    context.Set<T>().Where(filter).ToList();
+                return filter == null ? context.Set<T>().ToList() : context.Set<T>().Where(filter).ToList();
             }
         }
 
+        // ID ile tek bir nesneyi getirir
         public T GetById(int id)
         {
             using (var context = new TContext())
@@ -46,6 +49,7 @@ namespace ETICARET.DataAccess.Concrete.EfCore
             }
         }
 
+        // Belirtilen koşula uyan tek bir nesneyi getirir
         public T GetOne(Expression<Func<T, bool>> filter = null)
         {
             using (var context = new TContext())
@@ -54,6 +58,7 @@ namespace ETICARET.DataAccess.Concrete.EfCore
             }
         }
 
+        // Nesneyi günceller
         public virtual void Update(T entity)
         {
             using (var context = new TContext())
